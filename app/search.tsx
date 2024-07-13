@@ -4,24 +4,24 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  summonerName: z.string(),
-  tagLine: z.string(),
+  summonerName: z.string().min(2),
+  tagLine: z.string().min(2),
 });
 
 export function Search() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,7 +35,8 @@ export function Search() {
       values.tagLine = values.tagLine.substring(1);
     }
 
-    console.log(values);
+    const { summonerName, tagLine } = values;
+    router.push(`/summoners/${summonerName}/${tagLine}`);
   }
 
   return (
@@ -54,7 +55,6 @@ export function Search() {
                 <FormControl>
                   <Input placeholder="Hide on bush" {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -67,7 +67,6 @@ export function Search() {
                 <FormControl>
                   <Input placeholder="KR1" {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
