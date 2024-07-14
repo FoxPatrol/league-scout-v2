@@ -31,11 +31,15 @@ export function Search() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    if (values.tagLine.startsWith("#")) {
-      values.tagLine = values.tagLine.substring(1);
+    let { summonerName, tagLine } = values;
+
+    if (tagLine.startsWith("#")) {
+      tagLine = tagLine.substring(1);
     }
 
-    const { summonerName, tagLine } = values;
+    summonerName = summonerName.trim();
+    tagLine = tagLine.trim();
+
     router.push(`/summoners/${summonerName}/${tagLine}`);
   }
 

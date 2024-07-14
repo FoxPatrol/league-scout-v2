@@ -10,4 +10,11 @@ League Scout is an app designed for analyzing [League](https://www.leagueoflegen
   - Node
 - [Lucide React](https://lucide.dev/guide/packages/lucide-react) (icons)
 - [Shadcn](https://ui.shadcn.com/) (component library)
-- [Fightmegg](https://www.npmjs.com/package/@fightmegg/riot-api) (api interface)
+- [Twisted](https://www.npmjs.com/package/twisted) (api interface)
+
+## Assets
+
+Assets from [Community Dragon](https://www.communitydragon.org/documentation/assets).
+Also from [CD endpoints](https://cdn.communitydragon.org/endpoints).
+
+Custom script to download assets `download-dd-assets` in `package.json`.
